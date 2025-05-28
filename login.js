@@ -52,3 +52,12 @@ function parseJwt(token) {
         return {};
     }
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.login-container');
+    if (container) {
+        setTimeout(() => {
+            container.classList.add('show');
+        }, 100); // трохи затримки, щоб виглядало плавно
+    }
+});
