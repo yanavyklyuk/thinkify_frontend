@@ -1,0 +1,29 @@
+<template id="edit-profile-template">
+  <div>
+    <h2>Редагування профілю</h2>
+    <form>
+      <label>
+        Name:<br/>
+        <input type="text" name="first_name" required />
+      </label><br/>
+
+      <label>
+        Surname:<br/>
+        <input type="text" name="last_name" required />
+      </label><br/>
+
+      <label>
+        Username:<br/>
+        <input type="text" name="username" required />
+      </label><br/>
+
+      <label>
+        Email:<br/>
+        <input type="email" name="email" required />
+      </label><br/>
+
+      <button type="submit">Save</button>
+      <button type="button" id="btn-cancel-edit">Cancel</button>
+    </form>
+  </div>
+</template>

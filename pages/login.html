@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Thinkify</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<div class="login-container">
+  <h2>Вхід</h2>
+  <form id="login-form" action="http://localhost:8000/api/v1/login/" method="POST">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Пароль" required>
+    <button type="submit">Увійти</button>
+  </form>
+</div>
+
+<script src = '../login.js'> </script>
+</body>
+</html>
