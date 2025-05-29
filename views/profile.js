@@ -45,13 +45,29 @@ export async function renderProfilePage() {
         clone.querySelector('.user-id').textContent = user.id;
         clone.querySelector('.user-first-name').textContent = user.first_name || '-';
         clone.querySelector('.user-last-name').textContent = user.last_name || '-';
-        clone.querySelector('.user-email').textContent = user.email;
-        clone.querySelector('.user-gender').textContent = user.gender || '-';
+        clone.querySelector('.user-username').textContent = user.username;
+        clone.querySelector('.user-email').textContent = user.email || '-';
+        clone.querySelector('.user-role').textContent = user.role || '-';
 
         sessionStorage.removeItem('fromUsers');
 
         app.innerHTML = '';
         app.appendChild(clone);
+
+        const containers = app.querySelectorAll('.main-button-container');
+
+        setTimeout(() => {
+            const containers = app.querySelectorAll('.main-button-container');
+            containers.forEach((container, index) => {
+                setTimeout(() => {
+                    container.classList.add('show');
+                }, index * 300);
+            });
+        }, 100);
+
+        setTimeout(() => {
+            app.querySelector('.user-profile').classList.add('show');
+        }, 50);
 
         const bntUsersList = app.querySelector('#btn-users-list');
         const btnEditProfile = app.querySelector('#btn-edit-profile');

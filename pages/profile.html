@@ -1,14 +1,18 @@
 <template id="profile-template">
-  <div>
-    <h2>Профіль користувача</h2>
+  <div class="user-profile">
+    <h2>User profile</h2>
     <p>ID: <span class="user-id"></span></p>
-    <p>Ім'я: <span class="user-first-name"></span></p>
-    <p>Прізвище: <span class="user-last-name"></span></p>
+    <p>Name: <span class="user-first-name"></span></p>
+    <p>Surname: <span class="user-last-name"></span></p>
+    <p>Username: <span class="user-username"></span></p>
     <p>Email: <span class="user-email"></span></p>
-    <p>Стать: <span class="user-gender"></span></p>
+    <p>Role: <span class="user-role"></span></p>
 
-    <button id="btn-users-list" style="display:none">Показати всіх користувачів</button>
-    <button id="btn-edit-profile">Редагувати профіль</button>
-    <button id="btn-logout" style="display:inline">Вийти</button>
+    <!-- Блок кнопок -->
+    <div class="buttons">
+      <button id="btn-users-list" style="display:none">Show all users</button>
+      <button id="btn-edit-profile">Edit</button>
+      <button id="btn-logout" style="display:inline">Log out</button>
+    </div>
   </div>
 </template>

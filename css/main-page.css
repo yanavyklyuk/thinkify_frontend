@@ -51,10 +51,10 @@
     background: #5271ff; /* Primary blue */
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 100px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 50%; /* Button width relative to the container */
+    width: 30%; /* Button width relative to the container */
     max-width: 300px; /* Maximum width for buttons */
 }
 

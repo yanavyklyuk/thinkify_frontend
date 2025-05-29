@@ -1,29 +1,33 @@
 <template id="edit-profile-template">
-  <div>
-    <h2>Редагування профілю</h2>
-    <form>
+  <div class="user-profile">
+    <h2>Profile edit</h2>
+    <form class="edit-form">
       <label>
-        Name:<br/>
-        <input type="text" name="first_name" required />
-      </label><br/>
-
+        <strong>Name:</strong><br/>
+        <input type="text" name="first_name" class="profile-input" required />
+      </label>
       <label>
-        Surname:<br/>
-        <input type="text" name="last_name" required />
-      </label><br/>
-
+        <strong>Surname:</strong><br/>
+        <input type="text" name="last_name" class="profile-input" required />
+      </label>
       <label>
-        Username:<br/>
-        <input type="text" name="username" required />
-      </label><br/>
-
+        <strong>Username:</strong><br/>
+        <input type="text" name="username" class="profile-input" required />
+      </label>
       <label>
-        Email:<br/>
-        <input type="email" name="email" required />
-      </label><br/>
+        <strong>Email:</strong><br/>
+        <input type="email" name="email" class="profile-input" required />
+      </label>
+      <label>
+        <strong>Role:</strong><br/>
+        <input type="text" name="role" class="profile-input" required />
+      </label>
 
-      <button type="submit">Save</button>
-      <button type="button" id="btn-cancel-edit">Cancel</button>
+      <!-- Buttons section -->
+      <div class="buttons">
+        <button type="submit">Save</button>
+        <button type="button" id="btn-cancel-edit">Cancel</button>
+      </div>
     </form>
   </div>
 </template>

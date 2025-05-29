@@ -191,6 +191,46 @@ footer span {
     justify-content: center; /* або 'space-between' */
 }
 
+.user-card {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.user-card.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.event-card {
+    width: 90%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 32px;
+    background-color: rgba(82, 113, 255, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Same animation as user cards */
+}
+
+.event-card:hover {
+    background-color: rgba(0, 42, 255, 0.27); /* Light hover effect */
+}
+
+.event-card.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#events-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center; /* Center the cards */
+}
+
 
 /* Додаткові налаштування для планшетів (до 1024px) */
 @media screen and (max-width: 1024px) {

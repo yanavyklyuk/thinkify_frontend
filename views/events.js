@@ -21,29 +21,35 @@ export async function renderEventsPage() {
 
         const events = await response.json();
 
-        // Рендер таблиці
         const app = document.getElementById("app");
         app.innerHTML = `
-          <h2>events</h2>
-          <table border="1" id="events-table">
-            <thead>
-              <tr><th>ID</th><th>Ім’я</th><th>Прізвище</th><th>Email</th></tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        `;
+       <div id="events-container" style="display: flex; flex-wrap: wrap; gap: 16px;"></div>
+     `;
 
-        const tbody = app.querySelector('tbody');
+
+        const container = document.getElementById('events-container');
         const template = document.getElementById("event-row-template");
 
         events.forEach(event => {
             const clone = template.content.cloneNode(true);
-            clone.querySelector('.event-id').textContent = event.id;
             clone.querySelector('.event-name').textContent = event.name || '-';
-            clone.querySelector('.event-date').textContent = event.date || '-';
+            clone.querySelector('.event-location-city').textContent = event.location_city || '-';
             clone.querySelector('.event-type').textContent = event.type;
-            tbody.appendChild(clone);
+
+            clone.querySelector('.event-card').addEventListener('click', () => {
+                window.location.hash = `#event/${event.id}`;
+            });
+
+            container.appendChild(clone); // Додаємо картку у контейнер
         });
+
+        const cards = document.querySelectorAll('.event-card');
+        cards.forEach((card, i) => {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, i * 150);
+        });
+
 
     } catch (err) {
         document.getElementById("app").innerHTML = `<p>Помилка: ${err.message}</p>`;

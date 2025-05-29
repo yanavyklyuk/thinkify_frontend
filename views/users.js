@@ -47,6 +47,14 @@ export async function renderUsersPage() {
             });
 
             container.appendChild(clone);
+
+            const cards = document.querySelectorAll('.user-card');
+
+            cards.forEach((card, i) => {
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, i * 100);
+            });
         });
 
 
