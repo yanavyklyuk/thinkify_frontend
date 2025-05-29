@@ -1,3 +1,4 @@
+import { navigateTo } from '../app.js';
 import { renderUsersPage } from './users.js';
 
 async function loadTemplate(url, id) {
@@ -11,7 +12,8 @@ async function loadTemplate(url, id) {
 }
 
 export async function renderUserPage(id) {
-    const token = localStorage.getItem('token'); // токен потрібен для авторизації
+    const token = localStorage.getItem('token');
+    const currentUserId = localStorage.getItem('id');// токен потрібен для авторизації
 
     if (!token) {
         document.getElementById("app").innerHTML = `<p>Необхідно увійти в систему</p>`;
@@ -53,14 +55,37 @@ export async function renderUserPage(id) {
 
         const btnUsersList = app.querySelector('#btn-users-list');
         const btnEditProfile = app.querySelector('#btn-edit-profile');
+        const btnLogout = app.querySelector('#btn-logout');
+
+        if (btnUsersList) {
+            if (sessionStorage.getItem('fromUsers') === '1') {
+                btnUsersList.style.display = '';
+                btnUsersList.addEventListener('click', async () => {
+                    sessionStorage.removeItem('fromUsers');
+                    navigateTo('#users');
+                });
+            } else {
+                btnUsersList.style.display = 'none';
+            }
+        }
+
 
         btnUsersList.addEventListener('click', async () => {
-            await renderUsersPage();
+            navigateTo('#users');
         });
 
         btnEditProfile.addEventListener('click', () => {
-            window.location.hash = `#profile/edit/${id}`; // наприклад, так, якщо у тебе є маршрут редагування
+            window.location.hash = `#profile/edit/${id}`;
         });
+
+
+        if (btnLogout && id !== currentUserId) {
+            btnLogout.style.display = 'none';
+            btnLogout.addEventListener('click', () => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        }
 
     } catch (err) {
         document.getElementById("app").innerHTML = `<p>Помилка: ${err.message}</p>`;

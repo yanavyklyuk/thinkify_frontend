@@ -1,0 +1,77 @@
+/* Центруємо заголовок */
+.centered-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Parent container for centering and vertical alignment */
+.content-container { /* See the boundaries of the container */
+    display: flex;
+    flex-direction: column; /* Stack the containers vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically in the page */
+    gap: 20px; /* Spacing between the containers */
+    min-height: 100vh; /* Full height of the viewport */
+    padding: 20px;
+    margin: -10px;/* Internal padding for the content area */
+}
+
+/* Individual button containers */
+.main-button-container {
+    position: relative;
+    background-color: #dbe3ff; /* Світло-синій фон */
+    width: 80%; /* Контейнер займає 80% ширини сторінки */
+    height: 400px; /* Збільшена висота */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Кнопки залишаються внизу */
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 30px; /* Більший внутрішній відступ */
+    text-align: center;
+}
+
+/* Зменшуємо зображення */
+.background-image {
+    width: 70%; /* Менший розмір */
+    max-width: 650px;
+    height: auto;
+    opacity: 0.9;
+}
+
+/* Buttons inside the containers */
+.main-button-container button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #5271ff; /* Primary blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 50%; /* Button width relative to the container */
+    max-width: 300px; /* Maximum width for buttons */
+}
+
+/* Button hover effect */
+.main-button-container button:hover {
+    background-color: #425bd9; /* Darker blue */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.main-button-container {
+    opacity: 0;
+    transform: translateX(-50px); /* Зміщення ліворуч */
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+/* Коли контейнер стає видимим */
+.main-button-container.show {
+    opacity: 1;
+    transform: translateX(0);
+}

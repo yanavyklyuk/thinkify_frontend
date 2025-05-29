@@ -3,37 +3,61 @@ import { renderEventsPage } from './views/events.js';
 import { renderProfilePage } from './views/profile.js';
 import { renderEditProfilePage } from './views/edit_profile.js';
 import { renderUserPage } from './views/user.js';
+import { renderMainPage } from './views/main.js'
 
 window.addEventListener('hashchange', handleRoute);
 window.addEventListener('DOMContentLoaded', handleRoute);
 
+export function navigateTo(hash) {
+    if (window.location.hash === hash) {
+        handleRoute();
+    } else {
+        window.location.hash = hash;
+    }
+}
+
 async function handleRoute() {
+    if (!isAuthenticated() && !window.location.pathname.endsWith('login.html')) {
+        window.location.href = 'pages/login.html';
+    }
     const hash = window.location.hash || '#main';
 
     if (hash === '#main') {
-        renderMainPage();
+        await renderMainPage();
     } else if (hash === '#users') {
         await renderUsersPage();
-    } else if (hash === '#events'){
-        await renderEventsPage()
+    } else if (hash === '#events') {
+        await renderEventsPage();
     } else if (hash === '#profile') {
         await renderProfilePage();
     } else if (hash.startsWith('#profile/edit/')) {
         const userId = hash.split('/')[2]; // витягуємо id з URL
         await renderEditProfilePage(userId);
-    } else if (hash === '#profile/') {
+    } else if (hash.startsWith('#profile/') && !hash.startsWith('#profile/edit/')) {
         const userId = hash.split('/')[1];
-        await renderUserPage(userId);
+        if (userId) {
+            await renderUserPage(userId);
+        } else {
+            renderNotFound();
+        }
     }
     else {
         renderNotFound();
     }
 }
 
-function renderMainPage() {
-    document.getElementById('app').innerHTML = `<h1>Головна сторінка</h1>`;
-}
-
 function renderNotFound() {
     document.getElementById('app').innerHTML = `<h1>Сторінку не знайдено</h1>`;
 }
+
+document.querySelectorAll('nav a[data-page]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        navigateTo('#' + this.dataset.page);
+    });
+});
+
+function isAuthenticated() {
+    return !!localStorage.getItem('token');
+}
+

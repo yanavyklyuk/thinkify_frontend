@@ -26,7 +26,6 @@ export async function renderUsersPage() {
         // Рендер контейнера для карток
         const app = document.getElementById("app");
         app.innerHTML = `
-          <h2>Користувачі</h2>
           <div id="users-container" style="display: flex; flex-wrap: wrap; gap: 16px;"></div>
         `;
 
@@ -35,6 +34,10 @@ export async function renderUsersPage() {
 
         users.forEach(user => {
             const clone = template.content.cloneNode(true);
+            clone.querySelector('.user-card').addEventListener('click', () => {
+                sessionStorage.setItem('fromUsers', '1');
+                window.location.hash = `#profile/${user.id}`;
+            });
             clone.querySelector('.user-first-name').textContent = user.first_name || '-';
             clone.querySelector('.user-last-name').textContent = user.last_name || '-';
             clone.querySelector('.user-username').textContent = user.username || '-';

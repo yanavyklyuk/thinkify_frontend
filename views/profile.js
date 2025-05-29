@@ -1,3 +1,5 @@
+import { navigateTo } from '../app.js';
+
 async function loadTemplate(url, id) {
     if (document.getElementById(id)) return; // шаблон уже завантажено
     const response = await fetch(url);
@@ -46,8 +48,27 @@ export async function renderProfilePage() {
         clone.querySelector('.user-email').textContent = user.email;
         clone.querySelector('.user-gender').textContent = user.gender || '-';
 
+        sessionStorage.removeItem('fromUsers');
+
         app.innerHTML = '';
         app.appendChild(clone);
+
+        const bntUsersList = app.querySelector('#btn-users-list');
+        const btnEditProfile = app.querySelector('#btn-edit-profile');
+        const btnLogout = app.querySelector('#btn-logout');
+
+
+        bntUsersList.style.display = 'none';
+
+        btnEditProfile.addEventListener('click', () => {
+            window.location.hash = `#profile/edit/${userId}`;
+        });
+
+        btnLogout.addEventListener('click', async () => {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        });
+
 
     } catch (err) {
         document.getElementById("app").innerHTML = `<p>Помилка: ${err.message}</p>`;

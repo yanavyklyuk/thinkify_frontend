@@ -1,3 +1,5 @@
+import { navigateTo } from '../app.js';
+
 export async function loadTemplate(url, id) {
     if (document.getElementById(id)) return; // шаблон уже завантажено
     const response = await fetch(url);
@@ -80,11 +82,11 @@ export async function renderEditProfilePage(userId) {
             }
         });
 
-        // Кнопка відміни — повернення на профіль
         const cancelBtn = app.querySelector('#btn-cancel-edit');
         cancelBtn.addEventListener('click', () => {
-            window.location.hash = '#profile';
+            navigateTo(`#profile/${userId}`);
         });
+
 
     } catch (err) {
         document.getElementById("app").innerHTML = `<p>Помилка: ${err.message}</p>`;
