@@ -23,8 +23,18 @@ export async function renderEventsPage() {
 
         const app = document.getElementById("app");
         app.innerHTML = `
-       <div id="events-container" style="display: flex; flex-wrap: wrap; gap: 16px;"></div>
-     `;
+        <div style="width: 95%; padding-left: 0; margin-left: 0; display: flex; justify-content: flex-end; align-items: center; margin-bottom: 25px;">
+    <button id="btn-create-new-event" class="primary-btn">
+      Create New
+    </button>
+  </div>
+
+  <div id="events-container" style="display: flex; flex-wrap: wrap; gap: 16px;"></div>
+`;
+
+        document.getElementById('btn-create-new-event').addEventListener('click', () => {
+            window.location.hash = '#event/edit/new'; // Navigate to "Edit Event" page for event creation
+        });
 
 
         const container = document.getElementById('events-container');
@@ -36,11 +46,12 @@ export async function renderEventsPage() {
             clone.querySelector('.event-location-city').textContent = event.location_city || '-';
             clone.querySelector('.event-type').textContent = event.type;
 
+            // Event click handler to navigate to event details page
             clone.querySelector('.event-card').addEventListener('click', () => {
-                window.location.hash = `#event/${event.id}`;
+                window.location.hash = `#event/${event.id}`; // Navigate to event details page
             });
 
-            container.appendChild(clone); // Додаємо картку у контейнер
+            container.appendChild(clone); // Append event card
         });
 
         const cards = document.querySelectorAll('.event-card');

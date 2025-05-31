@@ -1,0 +1,267 @@
+/* Center the container in the viewport */
+.event-profile {
+    width: 35%;
+    min-width: 280px;
+    padding: 24px;
+    background-color: rgba(82, 113, 255, 0.20);
+    border-radius: 32px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%); /* Centering logic */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left; /* Align text to the left */
+
+    /* Initial state for animation */
+    opacity: 0;
+    transition: opacity 0.8s ease-out, top 0.8s ease-out; /* Use "top" for vertical movement */
+    top: 55%; /* Start slightly below the center */
+}
+
+/* Стилі для заголовку */
+.event-profile h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #1f2c68;
+}
+
+/* Стилі для текстових елементів */
+.event-profile p {
+    width: 100%;
+    font-size: 20px;
+    color: #2b3b84;
+    margin: 6px 0;
+}
+
+/* Посилання на URL */
+.event-profile a.event-url {
+    color: #4f6ddc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.event-profile a.event-url:hover {
+    color: #637fff;
+    text-decoration: underline;
+}
+
+/* Блок кнопок */
+.event-profile .buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Загальні стилі кнопок */
+.event-profile .buttons button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    border: none;
+    border-radius: 100px;
+    background-color: #637fff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.event-profile .buttons button:hover {
+    background-color: #425bd9;
+    transform: scale(1.05);
+}
+
+/* Червона кнопка для видалення */
+.event-profile .buttons button.delete-event-btn {
+    background-color: #ff3333;
+}
+
+.event-profile .buttons button.delete-event-btn:hover {
+    background-color: #d92626;
+}
+
+/* Коли івент завантажено */
+.event-profile.show {
+    opacity: 1;
+    top: 50%; /* Move to the center */
+}
+
+/* Адаптивність дизайну */
+
+/* Для екрану до 1024px */
+@media screen and (max-width: 1024px) {
+    .event-profile {
+        width: 60%;
+        top: 50%; /* Center vertically */
+        transform: translate(-50%, -50%); /* Adjusted centering */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .event-profile {
+        width: 80%;
+    }
+    .event-profile h2 {
+        font-size: 20px;
+    }
+    .event-profile p {
+        font-size: 18px;
+    }
+    .event-profile .buttons button {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .event-profile {
+        width: 90%;
+    }
+    .event-profile h2 {
+        font-size: 18px;
+    }
+    .event-profile p {
+        font-size: 16px;
+    }
+    .event-profile .buttons button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+.event-edit {
+    width: 40%;
+    min-width: 400px;
+    padding: 24px;
+    background-color: rgba(82, 113, 255, 0.20);
+    border-radius: 32px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.4s ease-out, top 0.6s ease-out;
+}
+
+.event-edit.visible {
+    opacity: 1;
+    top: 30%;
+    transform: translate(-50%, -30%);
+}
+
+.event-edit h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1f2c68;
+}
+
+.event-edit-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.event-input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 16px;
+    border: 1px solid #d4d4d4;
+    border-radius: 100px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-family: "Montserrat", sans-serif;
+}
+
+.event-input:focus {
+    border-color: #637fff;
+}
+
+.event-textarea {
+    resize: none;
+    height: 100px;
+}
+
+.event-edit .buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.event-edit .buttons button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    border: none;
+    border-radius: 100px;
+    background-color: #637fff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.event-edit .buttons button:hover {
+    background-color: #425bd9;
+    transform: scale(1.05);
+}
+
+.event-edit .buttons button.cancel-btn {
+    background-color: #637fff;
+}
+
+.event-edit .buttons button.cancel-btn:hover {
+    background-color: #425bd9;
+}
+
+
+.event-edit.show {
+    opacity: 1;
+    top: 50%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .event-edit {
+        width: 80%;
+    }
+    .event-edit h2 {
+        font-size: 20px;
+    }
+    .event-edit .buttons button {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .event-edit {
+        width: 90%;
+    }
+    .event-edit h2 {
+        font-size: 18px;
+    }
+    .event-edit .buttons button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}

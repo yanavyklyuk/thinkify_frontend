@@ -3,7 +3,9 @@ import { renderEventsPage } from './views/events.js';
 import { renderProfilePage } from './views/profile.js';
 import { renderEditProfilePage } from './views/edit_profile.js';
 import { renderUserPage } from './views/user.js';
-import { renderMainPage } from './views/main.js'
+import { renderMainPage } from './views/main.js';
+import { renderEventPage } from './views/event.js';
+import { renderEditEventPage } from './views/edit_event.js';// Import the renderEventPage function
 
 window.addEventListener('hashchange', handleRoute);
 window.addEventListener('DOMContentLoaded', handleRoute);
@@ -31,7 +33,7 @@ async function handleRoute() {
     } else if (hash === '#profile') {
         await renderProfilePage();
     } else if (hash.startsWith('#profile/edit/')) {
-        const userId = hash.split('/')[2]; // витягуємо id з URL
+        const userId = hash.split('/')[2]; // Get user ID from the URL
         await renderEditProfilePage(userId);
     } else if (hash.startsWith('#profile/') && !hash.startsWith('#profile/edit/')) {
         const userId = hash.split('/')[1];
@@ -40,8 +42,17 @@ async function handleRoute() {
         } else {
             renderNotFound();
         }
-    }
-    else {
+    } else if(hash.startsWith('#event/edit/')) {
+        const eventId = hash.split('/')[2]; // Extract event ID or "new"
+        await renderEditEventPage(eventId);
+    } else if (hash.startsWith('#event/')) {
+        const eventId = hash.split('/')[1]; // Get the event ID from the URL
+        if (eventId) {
+            await renderEventPage(eventId);
+        } else {
+            renderNotFound();
+        }
+    } else {
         renderNotFound();
     }
 }
@@ -60,4 +71,3 @@ document.querySelectorAll('nav a[data-page]').forEach(link => {
 function isAuthenticated() {
     return !!localStorage.getItem('token');
 }
-

@@ -1,0 +1,37 @@
+<template id="edit-event-template">
+    <div class="event-edit show">
+        <h2 id="edit-event-title">Edit Event</h2>
+
+        <form id="event-form" class="event-edit-form">
+            <label>
+                Name:
+                <input type="text" id="event-name" class="event-input" required />
+            </label>
+            <label>
+                Date:
+                <input type="datetime-local" id="event-date" class="event-input" required />
+            </label>
+            <label>
+                City:
+                <input type="text" id="event-city" class="event-input" required />
+            </label>
+            <label>
+                Type:
+                <input type="text" id="event-type" class="event-input" required />
+            </label>
+            <label>
+                URL:
+                <input type="url" id="event-url" class="event-input" placeholder="https://example.com" required />
+            </label>
+            <label>
+                Description:
+                <textarea id="event-description" class="event-input event-textarea" rows="4"></textarea>
+            </label>
+
+            <div class="buttons">
+                <button type="submit" id="save-event-btn">Save Event</button>
+                <button type="button" id="cancel-event-btn" class="cancel-btn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</template>
