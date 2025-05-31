@@ -24,7 +24,7 @@ export async function renderProfilePage() {
     }
 
     try {
-        await loadTemplate('/thinkify_frontend/pages/profile.html', 'profile-template');
+        await loadTemplate('/thinkify_frontend/docs/profile.html', 'profile-template');
 
         const response = await fetch(`http://localhost:8000/api/v1/users/${userId}`, {
             headers: {

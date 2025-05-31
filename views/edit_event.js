@@ -32,7 +32,7 @@ export async function renderEditEventPage(eventId) {
         return;
     }
 
-    await loadTemplate('/thinkify_frontend/pages/edit_event.html', 'edit-event-template');
+    await loadTemplate('/thinkify_frontend/docs/edit_event.html', 'edit-event-template');
 
     const app = document.getElementById('app');
     const template = document.getElementById('edit-event-template');

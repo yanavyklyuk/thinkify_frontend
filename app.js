@@ -20,7 +20,7 @@ export function navigateTo(hash) {
 
 async function handleRoute() {
     if (!isAuthenticated() && !window.location.pathname.endsWith('login.html')) {
-        window.location.href = 'pages/login.html';
+        window.location.href = 'docs/login.html';
     }
     const hash = window.location.hash || '#main';
 

@@ -5,7 +5,7 @@ export async function renderEventsPage() {
         return;
     }
 
-    await loadTemplate('/thinkify_frontend/pages/events.html');
+    await loadTemplate('/thinkify_frontend/docs/events.html');
 
     try {
         const response = await fetch('http://localhost:8000/api/v1/events/', {

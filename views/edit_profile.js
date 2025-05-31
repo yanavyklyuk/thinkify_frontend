@@ -18,7 +18,7 @@ export async function renderEditProfilePage(userId) {
     }
 
     try {
-        await loadTemplate('/thinkify_frontend/pages/edit_profile.html', 'edit-profile-template');
+        await loadTemplate('/thinkify_frontend/docs/edit_profile.html', 'edit-profile-template');
 
         const response = await fetch(`http://localhost:8000/api/v1/users/${userId}`, {
             headers: {

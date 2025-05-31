@@ -7,7 +7,7 @@ export async function renderUsersPage() {
         return;
     }
 
-    await loadTemplate('/thinkify_frontend/pages/users.html');
+    await loadTemplate('/thinkify_frontend/docs/users.html');
 
     try {
         const response = await fetch('http://localhost:8000/api/v1/users/', {

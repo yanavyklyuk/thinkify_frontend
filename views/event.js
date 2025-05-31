@@ -24,7 +24,7 @@ export async function renderEventPage(eventId) {
     }
 
     try {
-        await loadTemplate('/thinkify_frontend/pages/event.html', 'event-template');
+        await loadTemplate('/thinkify_frontend/docs/event.html', 'event-template');
 
         const response = await fetch(`http://localhost:8000/api/v1/events/${eventId}`, {
             headers: {
@@ -114,7 +114,7 @@ export async function renderEditEventPage(eventId) {
         return;
     }
 
-    await loadTemplate('/thinkify_frontend/pages/event.html', 'edit-event-template');
+    await loadTemplate('/thinkify_frontend/docs/event.html', 'edit-event-template');
 
     const app = document.getElementById('app');
     const template = document.getElementById('edit-event-template');

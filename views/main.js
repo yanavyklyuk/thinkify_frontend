@@ -1,5 +1,5 @@
 export async function renderMainPage() {
-    await loadTemplate('/thinkify_frontend/pages/main.html', 'main-template');
+    await loadTemplate('/thinkify_frontend/docs/main.html', 'main-template');
 
     const template = document.getElementById('main-template');
     const app = document.getElementById('app');
