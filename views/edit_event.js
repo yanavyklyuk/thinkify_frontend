@@ -1,5 +1,5 @@
 async function loadTemplate(url, id) {
-    if (document.getElementById(id)) return; // Template is already loaded
+    if (document.getElementById(id)) return;
 
     try {
         const response = await fetch(url);
@@ -12,7 +12,6 @@ async function loadTemplate(url, id) {
         const container = document.createElement('div');
         container.innerHTML = text;
 
-        // Append only if the template is found in the loaded HTML
         const template = container.querySelector(`#${id}`);
         if (!template) {
             throw new Error(`Template with id "${id}" not found in loaded HTML.`);
@@ -58,13 +57,12 @@ export async function renderEditEventPage(eventId) {
     const title = document.getElementById('edit-event-title');
     const nameInput = document.getElementById('event-name');
     const cityInput = document.getElementById('event-city');
-    const urlInput = document.getElementById('event-url'); // Get the URL input element
+    const urlInput = document.getElementById('event-url');
     const typeInput = document.getElementById('event-type');
     const dateInput = document.getElementById('event-date');
     const descriptionInput = document.getElementById('event-description');
     const form = document.getElementById('event-form');
 
-    // Populate fields for editing
     if (eventId !== 'new') {
         title.textContent = 'Edit Event';
 
@@ -83,10 +81,9 @@ export async function renderEditEventPage(eventId) {
 
             nameInput.value = event.name || '';
             cityInput.value = event.location_city || '';
-            urlInput.value = event.url || ''; // Populate the URL field
+            urlInput.value = event.url || '';
             typeInput.value = event.type || '';
 
-            // Format date for datetime-local input
             const eventDate = new Date(event.date);
             const formattedDate = eventDate.toISOString().slice(0, 16);
             dateInput.value = formattedDate;
@@ -97,23 +94,21 @@ export async function renderEditEventPage(eventId) {
             return;
         }
     } else {
-        title.textContent = 'Create New Event'; // For creating an event
+        title.textContent = 'Create New Event';
     }
 
-    // On submit, send the form data including 'url'
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const eventData = {
             name: nameInput.value.trim(),
             location_city: cityInput.value.trim(),
-            url: urlInput.value.trim(), // Include the URL
+            url: urlInput.value.trim(),
             type: typeInput.value.trim(),
-            date: dateInput.value, // Already formatted correctly as yyyy-MM-ddTHH:mm
+            date: dateInput.value,
             description: descriptionInput.value.trim(),
         };
 
-        // Validate URL
         if (!eventData.url.startsWith('http://') && !eventData.url.startsWith('https://')) {
             alert('Please provide a valid URL (e.g., https://example.com).');
             return;
@@ -138,13 +133,12 @@ export async function renderEditEventPage(eventId) {
                 throw new Error(error.message || 'Failed to save event');
             }
 
-            window.location.hash = '#events'; // Navigate back to events list
+            window.location.hash = '#events';
         } catch (err) {
             alert(`Error: ${err.message}`);
         }
     });
 
-    // Handle Cancel button
     document.getElementById('cancel-event-btn').addEventListener('click', () => {
         window.location.hash = '#events';
     });

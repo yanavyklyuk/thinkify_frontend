@@ -5,7 +5,6 @@ export async function renderEventsPage() {
         return;
     }
 
-    // Підтягуємо шаблон
     await loadTemplate('/thinkify_frontend/pages/events.html');
 
     try {
@@ -33,7 +32,7 @@ export async function renderEventsPage() {
 `;
 
         document.getElementById('btn-create-new-event').addEventListener('click', () => {
-            window.location.hash = '#event/edit/new'; // Navigate to "Edit Event" page for event creation
+            window.location.hash = '#event/edit/new';
         });
 
 
@@ -46,12 +45,11 @@ export async function renderEventsPage() {
             clone.querySelector('.event-location-city').textContent = event.location_city || '-';
             clone.querySelector('.event-type').textContent = event.type;
 
-            // Event click handler to navigate to event details page
             clone.querySelector('.event-card').addEventListener('click', () => {
-                window.location.hash = `#event/${event.id}`; // Navigate to event details page
+                window.location.hash = `#event/${event.id}`;
             });
 
-            container.appendChild(clone); // Append event card
+            container.appendChild(clone);
         });
 
         const cards = document.querySelectorAll('.event-card');
@@ -68,7 +66,7 @@ export async function renderEventsPage() {
 }
 
 async function loadTemplate(url) {
-    if (document.getElementById("event-row-template")) return; // шаблон уже завантажено
+    if (document.getElementById("event-row-template")) return;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Не вдалося завантажити шаблон');
     const text = await response.text();

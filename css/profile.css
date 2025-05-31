@@ -9,21 +9,19 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -40%); /* Centering logic */
+    transform: translate(-50%, -40%);
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left; /* Align text to the left */
+    text-align: left;
 
-    /* Initial state for animation */
     opacity: 0;
-    transition: opacity 0.8s ease-out, top 0.8s ease-out; /* Use "top" for vertical movement */
-    top: 55%; /* Start slightly below the center */
+    transition: opacity 0.8s ease-out, top 0.8s ease-out;
+    top: 55%;
 }
 
-/* Стилі для тексту */
 .user-profile h2 {
     font-size: 24px;
     font-weight: bold;
@@ -38,7 +36,6 @@
     margin: 6px 0;
 }
 
-/* Блок кнопок */
 .user-profile .buttons {
     margin-top: 20px;
     display: flex;
@@ -46,7 +43,6 @@
     gap: 16px;
 }
 
-/* Кнопки */
 .user-profile .buttons button {
     padding: 12px 20px;
     font-size: 16px;
@@ -65,21 +61,18 @@
     transform: scale(1.05);
 }
 
-/* Коли профіль завантажений */
 .user-profile.show {
     opacity: 1;
-    top: 50%; /* Move to the center */
+    top: 50%;
 }
 
-/* Form alignment inside .user-profile */
 .edit-form {
-    width: 100%; /* Use the full width within the container */
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Add space between form inputs */
+    gap: 16px;
 }
 
-/* Input fields */
 .profile-input {
     width: 100%;
     padding: 8px 12px;
@@ -97,7 +90,6 @@
     border-color: #637fff;
 }
 
-/* Form buttons (reuse button styles) */
 .user-profile .buttons button {
     padding: 12px 20px;
     font-size: 16px;
@@ -116,8 +108,7 @@
     transform: scale(1.05);
 }
 
-/* Adjusted vertical placement for edit profile */
 .user-profile.edit-form {
-    top: 60%; /* Shifted slightly lower */
-    transform: translate(-50%, -60%); /* Account for the new top value */
+    top: 60%;
+    transform: translate(-50%, -60%);
 }

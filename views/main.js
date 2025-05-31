@@ -35,7 +35,7 @@ export async function renderMainPage() {
 }
 
 async function loadTemplate(url, templateId) {
-    if (document.getElementById(templateId)) return; // шаблон уже є
+    if (document.getElementById(templateId)) return;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error('Не вдалося завантажити шаблон');
@@ -51,7 +51,7 @@ async function loadTemplate(url, templateId) {
 }
 
 async function updateUserName() {
-    await new Promise(resolve => setTimeout(resolve, 0)); // Затримка для впевненості, що DOM оновився
+    await new Promise(resolve => setTimeout(resolve, 0));
 
     const userName = localStorage.getItem("first_name") || "Користувач";
     const nameElement = document.getElementById("first_name");

@@ -7,7 +7,6 @@ export async function renderUsersPage() {
         return;
     }
 
-    // Підтягуємо шаблон
     await loadTemplate('/thinkify_frontend/pages/users.html');
 
     try {
@@ -23,7 +22,6 @@ export async function renderUsersPage() {
 
         const users = await response.json();
 
-        // Рендер контейнера для карток
         const app = document.getElementById("app");
         app.innerHTML = `
           <div id="users-container" style="display: flex; flex-wrap: wrap; gap: 16px;"></div>
@@ -64,7 +62,7 @@ export async function renderUsersPage() {
 }
 
 async function loadTemplate(url) {
-    if (document.getElementById("user-row-template")) return; // шаблон уже завантажено
+    if (document.getElementById("user-row-template")) return;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Не вдалося завантажити шаблон');
     const text = await response.text();

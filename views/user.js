@@ -2,7 +2,7 @@ import { navigateTo } from '../app.js';
 import { renderUsersPage } from './users.js';
 
 async function loadTemplate(url, id) {
-    if (document.getElementById(id)) return; // шаблон уже завантажено
+    if (document.getElementById(id)) return;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Не вдалося завантажити шаблон');
     const text = await response.text();
@@ -13,7 +13,7 @@ async function loadTemplate(url, id) {
 
 export async function renderUserPage(id) {
     const token = localStorage.getItem('token');
-    const currentUserId = localStorage.getItem('id');// токен потрібен для авторизації
+    const currentUserId = localStorage.getItem('id');
 
     if (!token) {
         document.getElementById("app").innerHTML = `<p>Необхідно увійти в систему</p>`;

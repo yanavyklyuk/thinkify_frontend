@@ -1,7 +1,7 @@
 import { navigateTo } from '../app.js';
 
 export async function loadTemplate(url, id) {
-    if (document.getElementById(id)) return; // шаблон вже завантажено
+    if (document.getElementById(id)) return;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Не вдалося завантажити шаблон');
     const text = await response.text();
@@ -18,10 +18,8 @@ export async function renderEditProfilePage(userId) {
     }
 
     try {
-        // Load the edit profile template
         await loadTemplate('/thinkify_frontend/pages/edit_profile.html', 'edit-profile-template');
 
-        // Fetch user data
         const response = await fetch(`http://localhost:8000/api/v1/users/${userId}`, {
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -34,12 +32,10 @@ export async function renderEditProfilePage(userId) {
 
         const user = await response.json();
 
-        // Render form with user data
         const template = document.getElementById('edit-profile-template');
         const app = document.getElementById('app');
         const clone = template.content.cloneNode(true);
 
-        // Populate form fields
         clone.querySelector('input[name="first_name"]').value = user.first_name || '';
         clone.querySelector('input[name="last_name"]').value = user.last_name || '';
         clone.querySelector('input[name="username"]').value = user.username || '';
@@ -49,13 +45,11 @@ export async function renderEditProfilePage(userId) {
         app.innerHTML = '';
         app.appendChild(clone);
 
-        // Add the "show" class to make it visible
-        const profileContainer = app.querySelector('.user-profile'); // Select .user-profile
+        const profileContainer = app.querySelector('.user-profile');
         setTimeout(() => {
-            profileContainer.classList.add('show'); // Add "show" class
+            profileContainer.classList.add('show');
         }, 50);
 
-        // Handle form submission
         const form = app.querySelector('form');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -89,7 +83,6 @@ export async function renderEditProfilePage(userId) {
             }
         });
 
-        // Handle "Cancel" button
         const cancelBtn = app.querySelector('#btn-cancel-edit');
         cancelBtn.addEventListener('click', () => {
             navigateTo(`#profile/${userId}`);

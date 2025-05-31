@@ -1,7 +1,7 @@
 import { navigateTo } from '../app.js';
 
 async function loadTemplate(url, id) {
-    if (document.getElementById(id)) return; // шаблон уже завантажено
+    if (document.getElementById(id)) return;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Не вдалося завантажити шаблон');
     const text = await response.text();

@@ -1,7 +1,7 @@
 import { navigateTo } from '../app.js';
 
 async function loadTemplate(url, id) {
-    if (document.getElementById(id)) return; // шаблон вже завантажено
+    if (document.getElementById(id)) return;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Не вдалося завантажити шаблон');
     const text = await response.text();
@@ -51,8 +51,8 @@ export async function renderEventPage(eventId) {
 
         const eventUrl = clone.querySelector('.event-url');
         if (event.url) {
-            eventUrl.href = event.url; // Set the event URL dynamically
-            eventUrl.textContent = event.url; // Display the URL
+            eventUrl.href = event.url;
+            eventUrl.textContent = event.url;
         } else {
             eventUrl.textContent = 'URL not available';
         }
@@ -64,15 +64,13 @@ export async function renderEventPage(eventId) {
             app.querySelector('.event-profile').classList.add('show');
         }, 120);
 
-        // Back to events button
         const btnBackToEvents = app.querySelector('#btn-back-events');
         if (btnBackToEvents) {
             btnBackToEvents.addEventListener('click', () => {
-                navigateTo('#events'); // Navigate back to events list
+                navigateTo('#events');
             });
         }
 
-        // Edit event button
         const btnEditEvent = app.querySelector('#btn-edit-event');
         if (btnEditEvent) {
             btnEditEvent.addEventListener('click', () => {
@@ -80,7 +78,6 @@ export async function renderEventPage(eventId) {
             });
         }
 
-        // Delete event button
         const btnDeleteEvent = app.querySelector('#btn-delete-event');
         if (btnDeleteEvent) {
             btnDeleteEvent.addEventListener('click', async () => {
@@ -100,7 +97,7 @@ export async function renderEventPage(eventId) {
                     }
 
                     alert('Event deleted successfully.');
-                    navigateTo('#events'); // Navigate back to events list
+                    navigateTo('#events');
                 } catch (err) {
                     alert(`Error: ${err.message}`);
                 }
@@ -134,7 +131,6 @@ export async function renderEditEventPage(eventId) {
     const descriptionInput = document.getElementById('event-description');
     const form = document.getElementById('event-form');
 
-    // If eventId is not "new", fetch event data for editing
     if (eventId !== 'new') {
         title.textContent = 'Edit Event';
 
@@ -160,11 +156,9 @@ export async function renderEditEventPage(eventId) {
             return;
         }
     } else {
-        // Creating a new event
         title.textContent = 'Create New Event';
     }
 
-    // Handle form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -193,14 +187,13 @@ export async function renderEditEventPage(eventId) {
                 throw new Error('Не вдалося зберегти івент');
             }
 
-            window.location.hash = '#events'; // Back to event list
+            window.location.hash = '#events';
         } catch (err) {
             alert(`Помилка: ${err.message}`);
         }
     });
 
-    // Handle Cancel button
     document.getElementById('cancel-event-btn').addEventListener('click', () => {
-        window.location.hash = '#events'; // Back to event list
+        window.location.hash = '#events';
     });
 }

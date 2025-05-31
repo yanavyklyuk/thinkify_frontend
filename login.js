@@ -58,6 +58,6 @@ window.addEventListener('DOMContentLoaded', () => {
     if (container) {
         setTimeout(() => {
             container.classList.add('show');
-        }, 100); // трохи затримки, щоб виглядало плавно
+        }, 100);
     }
 });

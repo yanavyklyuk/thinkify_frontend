@@ -5,7 +5,7 @@ import { renderEditProfilePage } from './views/edit_profile.js';
 import { renderUserPage } from './views/user.js';
 import { renderMainPage } from './views/main.js';
 import { renderEventPage } from './views/event.js';
-import { renderEditEventPage } from './views/edit_event.js';// Import the renderEventPage function
+import { renderEditEventPage } from './views/edit_event.js';
 
 window.addEventListener('hashchange', handleRoute);
 window.addEventListener('DOMContentLoaded', handleRoute);
@@ -33,7 +33,7 @@ async function handleRoute() {
     } else if (hash === '#profile') {
         await renderProfilePage();
     } else if (hash.startsWith('#profile/edit/')) {
-        const userId = hash.split('/')[2]; // Get user ID from the URL
+        const userId = hash.split('/')[2];
         await renderEditProfilePage(userId);
     } else if (hash.startsWith('#profile/') && !hash.startsWith('#profile/edit/')) {
         const userId = hash.split('/')[1];
@@ -43,10 +43,10 @@ async function handleRoute() {
             renderNotFound();
         }
     } else if(hash.startsWith('#event/edit/')) {
-        const eventId = hash.split('/')[2]; // Extract event ID or "new"
+        const eventId = hash.split('/')[2];
         await renderEditEventPage(eventId);
     } else if (hash.startsWith('#event/')) {
-        const eventId = hash.split('/')[1]; // Get the event ID from the URL
+        const eventId = hash.split('/')[1];
         if (eventId) {
             await renderEventPage(eventId);
         } else {

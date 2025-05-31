@@ -1,11 +1,9 @@
-/* Скидання базових стилів */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Загальні стилі для сторінки */
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgba(82, 113, 255, 0.1);
@@ -14,18 +12,18 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    position: relative; /* Потрібно для абсолютного позиціонування */
+    position: relative;
 }
 
 .background-image {
     position: absolute;
 
-    bottom: 5%; /* Регулює розташування зображення */
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    opacity: 0.6; /* Легка прозорість */
-    z-index: 0; /* Робить його нижчим за логін */
+    opacity: 0.6;
+    z-index: 0;
 }
 
 .login-container {
@@ -36,7 +34,7 @@ body {
     text-align: center;
     width: 550px;
     position: relative;
-    z-index: 2; /* Логін буде поверх зображення */
+    z-index: 2;
 }
 
 .montserrat-regular {
@@ -54,7 +52,6 @@ body {
     font-style: normal;
 }
 
-/* СТИЛІ HEADER */
 header {
     background-color: #ffffff;
     display: flex;
@@ -64,7 +61,6 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
-/* Початкове розташування навігації (для екранів з великою шириною) */
 nav {
     display: flex;
     align-items: center;
@@ -74,7 +70,6 @@ nav {
     padding: 15px;
 }
 
-/* Логотип */
 .logo a {
     margin-left: 65px;
     display: flex;
@@ -92,14 +87,13 @@ nav {
     position: relative;
     left: -10px;
     font-size: 50px;
-    font-weight: 800; /* Bold */
+    font-weight: 800;
     color: #000;
 }
 
-/* Навігаційне меню */
 nav ul {
     position: absolute;
-    left: 570px;    /* Розміщення від лівого краю */
+    left: 570px;
     right: 72px;
     list-style: none;
     display: flex;
@@ -114,9 +108,7 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #000;
-    font-weight: 500; /* Medium */
-    /* Використання clamp() для адаптивного розміру:
-       Мінімум: 25px, оптимально – 4vw, максимум: 45px */
+    font-weight: 500;
     font-size: clamp(25px, 4vw, 45px);
     transition: color 0.3s ease;
 }
@@ -125,12 +117,10 @@ nav ul li a:hover {
     color: rgba(82, 113, 255, 1);
 }
 
-/* Основний контент */
 main {
     padding: 20px 30px;
 }
 
-/* СТИЛІ FOOTER */
 footer {
     text-align: center;
     padding: 15px;
@@ -146,14 +136,14 @@ footer span {
 }
 
 h2 {
-    font-size: 45px; /* Ще більший заголовок */
+    font-size: 45px;
     color: #2b3b84;
     margin-bottom: 35px;
 }
 
 input {
     width: 100%;
-    padding: 16px; /* Збільшені поля */
+    padding: 16px;
     margin-bottom: 18px;
     border: 1px solid #ccc;
     border-radius: 100px;
@@ -185,9 +175,6 @@ button:hover {
     margin-right: 15px;
 }
 
-/* Адаптивність дизайну */
-
-/* Для екранів з шириною до 1200px — перехід до вертикального розташування */
 @media screen and (max-width: 1200px) {
     header {
         flex-direction: column;
@@ -221,7 +208,7 @@ button:hover {
 .name-box {
     max-width: 30%;
     padding: 12px;
-    background-color: #007bff; /* або інший колір */
+    background-color: #007bff;
     color: #fff;
     border-radius: 100px;
     margin-bottom: 12px;
@@ -245,14 +232,14 @@ button:hover {
 }
 
 .user-card:hover {
-    background-color: #e0e0e0; /* Легкий ефект при наведенні */
+    background-color: #e0e0e0;
 }
 
 #users-container {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    justify-content: center; /* або 'space-between' */
+    justify-content: center;
 }
 
 .login-container {
@@ -266,17 +253,16 @@ button:hover {
     transform: translateY(0);
 }
 
-/* Додаткові налаштування для планшетів (до 1024px) */
 @media screen and (max-width: 1024px) {
     .logo span {
-        font-size: 40px;  /* Зменшення розміру текстового логотипу */
+        font-size: 40px;
     }
     .logo img {
-        width: 100px;     /* Зменшення картинки логотипу */
-        height: 104px;    /* Пропорційне зменшення */
+        width: 100px;
+        height: 104px;
     }
     nav ul li a {
-        font-size: clamp(30px, 3.5vw, 35px);  /* Трохи зменшений розмір меню */
+        font-size: clamp(30px, 3.5vw, 35px);
     }
     footer {
         padding: 12px 20px;
@@ -284,15 +270,14 @@ button:hover {
     }
 }
 
-/* Коригування для мобільних телефонів (до 768px) */
 @media screen and (max-width: 768px) {
     nav ul {
         gap: 20px;
         flex-wrap: nowrap;
-        overflow-x: auto;  /* Горизонтальний скрол, якщо простору недостатньо */
+        overflow-x: auto;
         white-space: nowrap;
-        justify-content: center; /* Центрування пунктів меню */
-        margin: 0 auto; /* Автоматичне вирівнювання блоку по центру */
+        justify-content: center;
+        margin: 0 auto;
     }
     .logo img {
         width: 80px;
@@ -307,10 +292,9 @@ button:hover {
     }
 }
 
-/* Файнтюнинг для дуже малих телефонів (до 480px) */
 @media screen and (max-width: 480px) {
     .logo span {
-        font-size: 28px;  /* Зменшення текстового логотипу */
+        font-size: 28px;
     }
     .logo img {
         width: 60px;
@@ -318,7 +302,7 @@ button:hover {
     }
     nav ul {
         gap: 10px;
-        justify-content: center; /* Забезпечуємо центрування меню */
+        justify-content: center;
         margin: 0 auto;
     }
     nav ul li a {
